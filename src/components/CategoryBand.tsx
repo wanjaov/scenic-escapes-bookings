@@ -79,7 +79,7 @@ export function CategoryBand({
         </header>
 
         {layout === "feature" ? (
-          <FeatureBand mode={mode} offers={offers} cardClass={t.card} onBook={onBook} />
+          <FeatureBand mode={mode} offers={offers} onBook={onBook} />
         ) : (
           <>
             <p className="mb-8 max-w-[56ch] text-base text-muted-foreground sm:text-lg">
@@ -106,12 +106,10 @@ export function CategoryBand({
 function FeatureBand({
   mode,
   offers,
-  cardClass,
   onBook,
 }: {
   mode: ModeMeta;
   offers: Offer[];
-  cardClass: string;
   onBook: (offer: Offer) => void;
 }) {
   const feature = offers[0];
@@ -133,7 +131,7 @@ function FeatureBand({
       </div>
 
       <div className="order-1 lg:order-2">
-        <p className="max-w-46ch text-base text-muted-foreground sm:text-lg">
+        <p className="max-w-[46ch] text-base text-muted-foreground sm:text-lg">
           {mode.subheading}
         </p>
 
@@ -150,7 +148,7 @@ function FeatureBand({
                 <span className="block text-sm text-muted-foreground">{offer.meta}</span>
               </span>
               <span
-                className={`shrink-0 rounded-full bg-accent/25 px-3 py-1 text-sm font-medium text-ink transition-transform group-hover:-translate-y-0.5 ${cardClass ? "" : ""}`}
+                className="shrink-0 rounded-full bg-accent/25 px-3 py-1 text-sm font-medium text-ink transition-transform group-hover:-translate-y-0.5"
               >
                 from {formatKes(offer.price)}
               </span>

@@ -15,7 +15,7 @@ import {
   type Offer,
   type SearchValues,
 } from "../lib/catalog";
-import { cn } from "../lib/utils";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -213,7 +213,7 @@ export default function Home() {
               className="aspect-16/8 w-full object-cover"
             />
           </div>
-          <div className="absolute bottom-5 left-6 rounded-full bg-accent px-4 py-2 text-xs font-semibold text-ink ring-1 ring-black/5 sm:left-10">
+          <div className="absolute bottom-5 left-6 rounded-full bg-accent px-4 py-2 text-xs font-semibold text-ink ring-1 ring-border sm:left-10">
             One desk · five ways to travel
           </div>
         </div>
