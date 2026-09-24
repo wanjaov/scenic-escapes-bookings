@@ -69,7 +69,7 @@ export function CategoryBand({
             >
               {mode.index} — {mode.kicker}
             </span>
-            <h2 className="mt-2 max-w-48ch font-display text-3xl font-semibold sm:text-4xl">
+            <h2 className="mt-2 max-w-[48ch] font-display text-3xl font-semibold sm:text-4xl">
               {mode.heading}
             </h2>
           </div>
@@ -82,7 +82,7 @@ export function CategoryBand({
           <FeatureBand mode={mode} offers={offers} cardClass={t.card} onBook={onBook} />
         ) : (
           <>
-            <p className="mb-8 max-w-56ch text-base text-muted-foreground sm:text-lg">
+            <p className="mb-8 max-w-[56ch] text-base text-muted-foreground sm:text-lg">
               {mode.subheading}
             </p>
             <div className={gridClass}>
