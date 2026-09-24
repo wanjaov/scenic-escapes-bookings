@@ -177,7 +177,7 @@ export function SearchDesk({
 
         <button
           type="submit"
-          className="shrink-0 rounded-field bg-foreground px-7 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
+          className="shrink-0 self-stretch rounded-field bg-foreground px-7 text-sm font-medium text-background transition-colors hover:bg-primary"
         >
           Search
         </button>
