@@ -23,7 +23,7 @@ const TONES: Record<
     pill: "bg-pine/10 text-pine",
     count: "text-muted-foreground",
     lead: "text-muted-foreground",
-    kicker: "text-primary",
+    kicker: "text-terra-deep",
   },
   cream: {
     band: "bg-cream text-foreground",
@@ -31,7 +31,7 @@ const TONES: Record<
     pill: "bg-terra/10 text-terra",
     count: "text-muted-foreground",
     lead: "text-muted-foreground",
-    kicker: "text-primary",
+    kicker: "text-terra-deep",
   },
   pine: {
     band: "bg-pine text-paper",
@@ -45,9 +45,9 @@ const TONES: Record<
     band: "bg-terra text-paper",
     card: "bg-paper text-foreground",
     pill: "bg-ink/10 text-ink",
-    count: "text-paper/85",
-    lead: "text-paper/80",
-    kicker: "text-paper/90",
+    count: "text-paper",
+    lead: "text-paper/90",
+    kicker: "text-paper",
   },
 };
 
