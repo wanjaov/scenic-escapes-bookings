@@ -316,7 +316,60 @@ export const OFFERS: Offer[] = [
   },
 ];
 
-export const HERO_IMAGE = { src: "", width: 1920, height: 900 };
+export interface Booking {
+  ref: string;
+  offerId: string;
+  title: string;
+  category: string;
+  mode: ModeId;
+  seats: number;
+  nights: number;
+  total: number;
+  when: string;
+}
+
+export interface SearchValues {
+  from: string;
+  to: string;
+  depart: string;
+  checkIn: string;
+  checkOut: string;
+  travellers: number;
+}
+
+export function nightsBetween(checkIn: string, checkOut: string): number {
+  if (!checkIn || !checkOut) return 1;
+  const a = new Date(checkIn).getTime();
+  const b = new Date(checkOut).getTime();
+  if (Number.isNaN(a) || Number.isNaN(b) || b <= a) return 1;
+  return Math.max(1, Math.round((b - a) / 86_400_000));
+}
+
+export function buildSummary(
+  mode: ModeMeta,
+  values: SearchValues,
+): { bandId: string; text: string } {
+  const count = offersFor(mode.id).length;
+  const low = cheapestFor(mode.id);
+  const from = values.from.trim();
+  const to = values.to.trim();
+
+  if (mode.unit === "night") {
+    const where = to ? ` near ${to}` : "";
+    return {
+      bandId: mode.bandId,
+      text: `${count} stays${where} — from ${low ? formatKes(low.price) : "—"} per night`,
+    };
+  }
+
+  const route = from && to ? ` · ${from} → ${to}` : "";
+  const when = values.depart ? ` · ${values.depart}` : "";
+  return {
+    bandId: mode.bandId,
+    text: `${count} ${mode.kicker.toLowerCase()} departures${route}${when} — from ${low ? formatKes(low.price) : "—"}`,
+  };
+}
+
 
 export function offersFor(mode: ModeId): Offer[] {
   return OFFERS.filter((offer) => offer.mode === mode);
