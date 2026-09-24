@@ -238,7 +238,7 @@ export default function Home() {
       </main>
 
       {/* FOOTER */}
-      <footer className="flex flex-col items-start justify-between gap-4 px-6 py-12 sm:flex-row sm:items-center sm:px-10">
+      <footer className="flex flex-col items-start justify-between gap-4 px-6 py-12 sm:flex-row sm:items-baseline sm:px-10">
         <span className="font-display text-xl font-semibold">Routebook</span>
         <p className="text-sm text-muted-foreground">
           A hand-set annual for bus, air, rail, water and stays. Clip it, file it, go.
