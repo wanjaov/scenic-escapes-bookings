@@ -37,7 +37,7 @@ const TONES: Record<
     band: "bg-pine text-paper",
     card: "bg-cream text-foreground",
     pill: "bg-pine/10 text-pine",
-    count: "text-paper/60",
+    count: "text-paper/80",
     lead: "text-paper/75",
     kicker: "text-ochre",
   },
@@ -45,9 +45,9 @@ const TONES: Record<
     band: "bg-terra text-paper",
     card: "bg-paper text-foreground",
     pill: "bg-ink/10 text-ink",
-    count: "text-paper/70",
+    count: "text-paper/85",
     lead: "text-paper/80",
-    kicker: "text-ochre",
+    kicker: "text-paper/90",
   },
 };
 

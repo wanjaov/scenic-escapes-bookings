@@ -123,7 +123,7 @@ export default function Home() {
               <a
                 key={id}
                 href={`#${entry.bandId}`}
-                className="text-foreground/70 transition-colors hover:text-primary"
+                className="text-foreground transition-colors hover:text-primary"
               >
                 {entry.kicker}
               </a>
