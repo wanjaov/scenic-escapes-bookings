@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteNav } from "../components/SiteNav";
 
 function NotFoundComponent() {
   return (
@@ -132,8 +133,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen grain bg-background text-foreground">
+        <SiteNav />
+        <Outlet />
+        <footer className="flex flex-col items-start justify-between gap-4 px-6 py-12 sm:flex-row sm:items-baseline sm:px-10">
+          <span className="font-display text-xl font-semibold">Routebook</span>
+          <p className="text-sm text-muted-foreground">
+            A hand-set annual for bus, air, rail, water and stays. Clip it, file it, go.
+          </p>
+          <span className="text-sm text-muted-foreground">© 2026 Routebook Travel</span>
+        </footer>
+      </div>
     </QueryClientProvider>
   );
 }
