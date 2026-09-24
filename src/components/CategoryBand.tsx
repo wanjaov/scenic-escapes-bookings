@@ -15,31 +15,39 @@ interface CategoryBandProps {
 
 const TONES: Record<
   BandTone,
-  { band: string; card: string; pill: string; count: string }
+  { band: string; card: string; pill: string; count: string; lead: string; kicker: string }
 > = {
   paper: {
     band: "bg-background text-foreground",
-    card: "bg-card",
+    card: "bg-card text-foreground",
     pill: "bg-pine/10 text-pine",
     count: "text-muted-foreground",
+    lead: "text-muted-foreground",
+    kicker: "text-primary",
   },
   cream: {
     band: "bg-cream text-foreground",
-    card: "bg-paper",
+    card: "bg-paper text-foreground",
     pill: "bg-terra/10 text-terra",
     count: "text-muted-foreground",
+    lead: "text-muted-foreground",
+    kicker: "text-primary",
   },
   pine: {
     band: "bg-pine text-paper",
-    card: "bg-cream",
+    card: "bg-cream text-foreground",
     pill: "bg-pine/10 text-pine",
     count: "text-paper/60",
+    lead: "text-paper/75",
+    kicker: "text-ochre",
   },
   terra: {
     band: "bg-terra text-paper",
-    card: "bg-paper",
+    card: "bg-paper text-foreground",
     pill: "bg-ink/10 text-ink",
     count: "text-paper/70",
+    lead: "text-paper/80",
+    kicker: "text-ochre",
   },
 };
 
@@ -64,9 +72,7 @@ export function CategoryBand({
       <div className="px-6 py-16 sm:px-10">
         <header className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <span
-              className={`label-micro ${tone === "pine" ? "text-ochre" : "text-primary"}`}
-            >
+            <span className={`label-micro ${t.kicker}`}>
               {mode.index} — {mode.kicker}
             </span>
             <h2 className="mt-2 max-w-[48ch] font-display text-3xl font-semibold sm:text-4xl">
@@ -79,10 +85,10 @@ export function CategoryBand({
         </header>
 
         {layout === "feature" ? (
-          <FeatureBand mode={mode} offers={offers} onBook={onBook} />
+          <FeatureBand mode={mode} offers={offers} lead={t.lead} onBook={onBook} />
         ) : (
           <>
-            <p className="mb-8 max-w-[56ch] text-base text-muted-foreground sm:text-lg">
+            <p className={`mb-8 max-w-[56ch] text-base sm:text-lg ${t.lead}`}>
               {mode.subheading}
             </p>
             <div className={gridClass}>
@@ -106,10 +112,12 @@ export function CategoryBand({
 function FeatureBand({
   mode,
   offers,
+  lead,
   onBook,
 }: {
   mode: ModeMeta;
   offers: Offer[];
+  lead: string;
   onBook: (offer: Offer) => void;
 }) {
   const feature = offers[0];
@@ -131,7 +139,7 @@ function FeatureBand({
       </div>
 
       <div className="order-1 lg:order-2">
-        <p className="max-w-[46ch] text-base text-muted-foreground sm:text-lg">
+        <p className={`max-w-[46ch] text-base sm:text-lg ${lead}`}>
           {mode.subheading}
         </p>
 
