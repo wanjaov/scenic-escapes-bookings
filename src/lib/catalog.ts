@@ -112,6 +112,10 @@ export const MODES: ModeMeta[] = [
   },
 ];
 
+export const MODES_BY_ID = Object.fromEntries(
+  MODES.map((entry) => [entry.id, entry]),
+) as Record<ModeId, ModeMeta>;
+
 export const OFFERS: Offer[] = [
   // 01 — Road
   {

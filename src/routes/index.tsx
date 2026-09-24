@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroCoast from "../assets/hero-coast.jpg";
 import { BookingSheet } from "../components/BookingSheet";
 import { CategoryBand, type BandLayout, type BandTone } from "../components/CategoryBand";
 import { SearchDesk } from "../components/SearchDesk";
 import {
-  MODES,
+  MODES_BY_ID,
   buildSummary,
   formatKes,
   nightsBetween,
@@ -76,7 +76,7 @@ export default function Home() {
   const [tripsOpen, setTripsOpen] = useState(false);
   const tripsRef = useRef<HTMLDivElement>(null);
 
-  const mode = useMemo(() => MODES.find((entry) => entry.id === modeId) ?? MODES[0], [modeId]);
+  const mode = MODES_BY_ID[modeId];
   const nights = nightsBetween(values.checkIn, values.checkOut);
 
   useEffect(() => {
@@ -118,8 +118,7 @@ export default function Home() {
 
         <div className="hidden items-center gap-8 text-sm font-medium md:flex">
           {BAND_ORDER.map((id) => {
-            const entry = MODES.find((item) => item.id === id);
-            if (!entry) return null;
+            const entry = MODES_BY_ID[id];
             return (
               <a
                 key={id}
@@ -222,8 +221,7 @@ export default function Home() {
       {/* CATEGORY BANDS */}
       <main>
         {BAND_ORDER.map((id) => {
-          const entry = MODES.find((item) => item.id === id);
-          if (!entry) return null;
+          const entry = MODES_BY_ID[id];
           const style = BAND_STYLES[id];
           return (
             <CategoryBand
