@@ -10,15 +10,34 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AttractionsRouteImport } from './routes/attractions'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CarRentalRouteImport } from './routes/car-rental'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as SkyRouteImport } from './routes/sky'
 import { Route as StaysRouteImport } from './routes/stays'
+import { Route as TransfersRouteImport } from './routes/transfers'
 import { Route as WaterRouteImport } from './routes/water'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttractionsRoute = AttractionsRouteImport.update({
+  id: '/attractions',
+  path: '/attractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarRentalRoute = CarRentalRouteImport.update({
+  id: '/car-rental',
+  path: '/car-rental',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RailRoute = RailRouteImport.update({
@@ -41,6 +60,11 @@ const StaysRoute = StaysRouteImport.update({
   path: '/stays',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransfersRoute = TransfersRouteImport.update({
+  id: '/transfers',
+  path: '/transfers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WaterRoute = WaterRouteImport.update({
   id: '/water',
   path: '/water',
@@ -49,43 +73,90 @@ const WaterRoute = WaterRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
+  '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
   '/stays': typeof StaysRoute
+  '/transfers': typeof TransfersRoute
   '/water': typeof WaterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
+  '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
   '/stays': typeof StaysRoute
+  '/transfers': typeof TransfersRoute
   '/water': typeof WaterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
+  '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
   '/stays': typeof StaysRoute
+  '/transfers': typeof TransfersRoute
   '/water': typeof WaterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/rail' | '/road' | '/sky' | '/stays' | '/water'
+  fullPaths:
+    | '/'
+    | '/attractions'
+    | '/auth'
+    | '/car-rental'
+    | '/rail'
+    | '/road'
+    | '/sky'
+    | '/stays'
+    | '/transfers'
+    | '/water'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/rail' | '/road' | '/sky' | '/stays' | '/water'
-  id: '__root__' | '/' | '/rail' | '/road' | '/sky' | '/stays' | '/water'
+  to:
+    | '/'
+    | '/attractions'
+    | '/auth'
+    | '/car-rental'
+    | '/rail'
+    | '/road'
+    | '/sky'
+    | '/stays'
+    | '/transfers'
+    | '/water'
+  id:
+    | '__root__'
+    | '/'
+    | '/attractions'
+    | '/auth'
+    | '/car-rental'
+    | '/rail'
+    | '/road'
+    | '/sky'
+    | '/stays'
+    | '/transfers'
+    | '/water'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttractionsRoute: typeof AttractionsRoute
+  AuthRoute: typeof AuthRoute
+  CarRentalRoute: typeof CarRentalRoute
   RailRoute: typeof RailRoute
   RoadRoute: typeof RoadRoute
   SkyRoute: typeof SkyRoute
   StaysRoute: typeof StaysRoute
+  TransfersRoute: typeof TransfersRoute
   WaterRoute: typeof WaterRoute
 }
 
@@ -96,6 +167,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attractions': {
+      id: '/attractions'
+      path: '/attractions'
+      fullPath: '/attractions'
+      preLoaderRoute: typeof AttractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/car-rental': {
+      id: '/car-rental'
+      path: '/car-rental'
+      fullPath: '/car-rental'
+      preLoaderRoute: typeof CarRentalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rail': {
@@ -126,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaysRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transfers': {
+      id: '/transfers'
+      path: '/transfers'
+      fullPath: '/transfers'
+      preLoaderRoute: typeof TransfersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/water': {
       id: '/water'
       path: '/water'
@@ -138,10 +237,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttractionsRoute: AttractionsRoute,
+  AuthRoute: AuthRoute,
+  CarRentalRoute: CarRentalRoute,
   RailRoute: RailRoute,
   RoadRoute: RoadRoute,
   SkyRoute: SkyRoute,
   StaysRoute: StaysRoute,
+  TransfersRoute: TransfersRoute,
   WaterRoute: WaterRoute,
 }
 export const routeTree = rootRouteImport

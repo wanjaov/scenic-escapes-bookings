@@ -1,0 +1,4 @@
+- [ ] Build stay-first homepage with destination, dates, guests, pets, and rated destination offers.
+- [ ] Add navigation destinations for stays, flights, car rental, attractions, transfers.
+- [ ] Add working registration and sign-in pages.
+- [ ] Verify search, navigation, and account flows in preview.

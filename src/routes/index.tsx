@@ -1,146 +1,46 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, Star } from "lucide-react";
 import heroCoast from "../assets/hero-coast.jpg";
-import { SearchDesk } from "../components/SearchDesk";
-import {
-  MODES_BY_ID,
-  cheapestFor,
-  formatKes,
-  offersFor,
-  type ModeId,
-  type SearchValues,
-} from "../lib/catalog";
+import hotelOceanfront from "../assets/hotel-oceanfront.jpg";
+import hotelLakeside from "../assets/hotel-lakeside.jpg";
+import hotelMountain from "../assets/hotel-mountain.jpg";
+import hotelRainforest from "../assets/hotel-rainforest.jpg";
+import { StaySearch } from "../components/StaySearch";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Routebook — Book buses, flights, trains, ferries & scenic stays" },
-      {
-        name: "description",
-        content:
-          "One search for five ways to travel: sleeper coaches, regional flights, scenic rail, dhow crossings and hotels picked for the view out the window.",
-      },
-      { property: "og:title", content: "Routebook — Book buses, flights, trains, ferries & stays" },
-      {
-        property: "og:description",
-        content:
-          "Compare coaches, cabins, carriages, crossings and rooms with a view, then book the one you want in a couple of clicks.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => ({ meta: [
+    { title: "Find your next stay in Kenya | Routebook" },
+    { name: "description", content: "Explore scenic stays and destination offers across Kenya. Choose dates and guests, then find your next stay." },
+    { property: "og:title", content: "Find your next stay in Kenya | Routebook" },
+    { property: "og:description", content: "Explore scenic stays and destination offers across Kenya." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Home,
 });
 
-const DEFAULTS: SearchValues = {
-  from: "Nairobi",
-  to: "Mombasa",
-  depart: "",
-  checkIn: "",
-  checkOut: "",
-  travellers: 2,
-};
-
-const PAGES = [
-  { id: "bus", to: "/road" },
-  { id: "rail", to: "/rail" },
-  { id: "air", to: "/sky" },
-  { id: "water", to: "/water" },
-  { id: "hotel", to: "/stays" },
-] as const satisfies readonly { id: ModeId; to: string }[];
-
-function isoDate(offsetDays: number): string {
-  const date = new Date();
-  date.setDate(date.getDate() + offsetDays);
-  return date.toISOString().slice(0, 10);
-}
+const destinations = [
+  { name: "Diani Beach", location: "Coast", image: hotelOceanfront, rating: "4.8", reviews: "Guest favourite", search: "Diani" },
+  { name: "Lake Naivasha", location: "Great Rift Valley", image: hotelLakeside, rating: "4.7", reviews: "Guest favourite", search: "Lake Naivasha" },
+  { name: "Nanyuki", location: "Mount Kenya", image: hotelMountain, rating: "4.9", reviews: "Guest favourite", search: "Nanyuki" },
+  { name: "Aberdare", location: "Central Highlands", image: hotelRainforest, rating: "4.6", reviews: "Guest favourite", search: "Aberdare" },
+];
 
 function Home() {
-  const navigate = useNavigate();
-  const [modeId, setModeId] = useState<ModeId>("bus");
-  const [values, setValues] = useState<SearchValues>(DEFAULTS);
-  const mode = MODES_BY_ID[modeId];
-
-  useEffect(() => {
-    setValues((c) => ({
-      ...c,
-      depart: c.depart || isoDate(7),
-      checkIn: c.checkIn || isoDate(7),
-      checkOut: c.checkOut || isoDate(9),
-    }));
-  }, []);
-
-  const handleSearch = () => {
-    const page = PAGES.find((p) => p.id === modeId);
-    if (page) navigate({ to: page.to });
-  };
-
-  return (
-    <>
-      <header className="px-6 pb-16 pt-4 sm:px-10">
-        <h1 className="max-w-[40ch] font-display text-5xl leading-none font-semibold sm:text-6xl lg:text-7xl">
-          Where to next, <span className="text-primary">fellow traveller?</span>
-        </h1>
-        <p className="mt-6 max-w-[52ch] text-base text-muted-foreground sm:text-lg">
-          Five ways to move and rest, hand-picked by the Routebook desk. Pick a category above or
-          search below.
-        </p>
-
-        <SearchDesk
-          mode={mode}
-          values={values}
-          onModeChange={setModeId}
-          onChange={(patch) => setValues((c) => ({ ...c, ...patch }))}
-          onSearch={handleSearch}
-          summary={null}
-          onClearSummary={() => {}}
-        />
-
-        <div className="mt-10 overflow-hidden rounded-panel ring-1 ring-border">
-          <img
-            src={heroCoast}
-            alt="Aerial view of the Kenyan coast at golden hour"
-            width={1920}
-            height={900}
-            className="aspect-16/8 w-full object-cover"
-          />
-        </div>
-      </header>
-
-      <main className="px-6 pb-16 sm:px-10">
-        <h2 className="mb-6 font-display text-3xl font-semibold">Browse by category</h2>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {PAGES.map((p) => {
-            const m = MODES_BY_ID[p.id];
-            const cover = offersFor(p.id)[0];
-            const low = cheapestFor(p.id);
-            return (
-              <Link
-                key={p.id}
-                to={p.to}
-                className="group overflow-hidden rounded-card bg-card ring-1 ring-border"
-              >
-                {cover && (
-                  <img
-                    src={cover.image}
-                    alt={m.kicker}
-                    loading="lazy"
-                    className="aspect-4/5 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                )}
-                <div className="p-4">
-                  <span className="label-micro text-terra-deep">{m.kicker}</span>
-                  <p className="mt-1 font-display text-lg font-semibold">{m.label}</p>
-                  {low && (
-                    <p className="text-sm text-muted-foreground">from {formatKes(low.price)}</p>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </main>
-    </>
-  );
+  return <main>
+    <section className="relative min-h-[540px] overflow-hidden bg-pine text-paper sm:min-h-[590px]">
+      <img src={heroCoast} alt="Aerial view of Kenya's coastline" width={1920} height={900} className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-ink/45" />
+      <div className="relative mx-auto flex min-h-[540px] max-w-7xl flex-col justify-center px-6 pb-28 pt-16 sm:min-h-[590px] sm:px-10">
+        <p className="mb-5 text-xs font-semibold uppercase text-paper/90">Stay somewhere worth remembering</p>
+        <h1 className="max-w-2xl font-display text-5xl font-semibold leading-tight sm:text-7xl">Find your next stay.</h1>
+        <p className="mt-5 max-w-lg text-lg text-paper/95 sm:text-xl">Search deals on hotels, homes, and much more.</p>
+      </div>
+    </section>
+    <div className="relative z-10 -mt-16 px-4 sm:px-8"><StaySearch /></div>
+    <section className="mx-auto max-w-7xl px-6 py-16 sm:px-10 sm:py-20">
+      <div className="mb-7 flex flex-wrap items-end justify-between gap-3"><div><p className="mb-2 text-xs font-semibold uppercase text-terra-deep">Places worth the journey</p><h2 className="font-display text-3xl font-semibold sm:text-4xl">Destinations with Offers</h2></div><Link to="/stays" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">Explore all stays <ArrowUpRight className="size-4" /></Link></div>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{destinations.map((place) => <Link key={place.name} to={`/stays?destination=${encodeURIComponent(place.search)}`} className="group overflow-hidden rounded-sm border border-border bg-card"><div className="overflow-hidden"><img src={place.image} alt={`Scenic stay in ${place.name}`} width={912} height={1200} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" /></div><div className="p-4"><p className="text-xs font-medium text-muted-foreground">{place.location}</p><div className="mt-1 flex items-start justify-between gap-2"><h3 className="font-display text-xl font-semibold">{place.name}</h3><span className="flex items-center gap-1 text-sm font-semibold"><Star className="size-4 fill-ochre text-ochre" />{place.rating}</span></div><p className="mt-2 text-xs text-muted-foreground">{place.reviews} · Sample rating</p></div></Link>)}</div>
+    </section>
+  </main>;
 }
