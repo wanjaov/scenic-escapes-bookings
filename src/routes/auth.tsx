@@ -6,7 +6,7 @@ import { supabase } from "../integrations/supabase/client";
 import { lovable } from "../integrations/lovable/index";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>) => ({ mode: search.mode === "register" ? "register" : "signin" }),
+  validateSearch: (search: Record<string, unknown>) => ({ mode: search['mode'] === "register" ? "register" : "signin" }),
   head: () => ({ meta: [{ title: "Register or Sign In | Routebook" }, { name: "description", content: "Create a Routebook account or sign in to plan your next stay." }, { property: "og:title", content: "Register or Sign In | Routebook" }, { property: "og:description", content: "Create a Routebook account or sign in to plan your next stay." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
   component: AuthPage,
 });
