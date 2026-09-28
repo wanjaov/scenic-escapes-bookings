@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AttractionsRouteImport } from './routes/attractions'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CarRentalRouteImport } from './routes/car-rental'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RoadRouteImport } from './routes/road'
@@ -27,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const AttractionsRoute = AttractionsRouteImport.update({
   id: '/attractions',
   path: '/attractions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CarRentalRoute = CarRentalRouteImport.update({
@@ -68,6 +74,7 @@ const WaterRoute = WaterRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/attractions': typeof AttractionsRoute
+  '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/attractions'
+    | '/auth'
     | '/car-rental'
     | '/rail'
     | '/road'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/attractions'
+    | '/auth'
     | '/car-rental'
     | '/rail'
     | '/road'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/attractions'
+    | '/auth'
     | '/car-rental'
     | '/rail'
     | '/road'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AttractionsRoute: typeof AttractionsRoute
+  AuthRoute: typeof AuthRoute
   CarRentalRoute: typeof CarRentalRoute
   RailRoute: typeof RailRoute
   RoadRoute: typeof RoadRoute
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/attractions'
       fullPath: '/attractions'
       preLoaderRoute: typeof AttractionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/car-rental': {
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AttractionsRoute: AttractionsRoute,
+  AuthRoute: AuthRoute,
   CarRentalRoute: CarRentalRoute,
   RailRoute: RailRoute,
   RoadRoute: RoadRoute,

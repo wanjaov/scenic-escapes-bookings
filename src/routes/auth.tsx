@@ -6,6 +6,7 @@ import { supabase } from "../integrations/supabase/client";
 import { lovable } from "../integrations/lovable/index";
 
 export const Route = createFileRoute("/auth")({
+  validateSearch: (search: Record<string, unknown>) => ({ mode: search.mode === "register" ? "register" : "signin" }),
   head: () => ({ meta: [{ title: "Register or Sign In | Routebook" }, { name: "description", content: "Create a Routebook account or sign in to plan your next stay." }, { property: "og:title", content: "Register or Sign In | Routebook" }, { property: "og:description", content: "Create a Routebook account or sign in to plan your next stay." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
   component: AuthPage,
 });
@@ -13,7 +14,8 @@ const schema = z.object({ email: z.string().trim().email("Enter a valid email ad
 
 function AuthPage() {
   const navigate = useNavigate();
-  const [register, setRegister] = useState(false);
+  const { mode } = Route.useSearch();
+  const [register, setRegister] = useState(mode === "register");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
