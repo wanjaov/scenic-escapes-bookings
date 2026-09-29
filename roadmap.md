@@ -2,3 +2,5 @@
 - [ ] Add navigation destinations for stays, flights, car rental, attractions, transfers.
 - [ ] Add working registration and sign-in pages.
 - [ ] Verify search, navigation, and account flows in preview.
+- [ ] Replace AI-generated site imagery with authentic destination photographs and make destination images compact.
+- [ ] Add the uploaded brief's property-type and trip-planner browsing sections without inventing verified listings, prices, reviews, or discounts.
