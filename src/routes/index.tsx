@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Star } from "lucide-react";
-import heroCoast from "../assets/hero-coast.jpg";
-import hotelOceanfront from "../assets/hotel-oceanfront.jpg";
-import hotelLakeside from "../assets/hotel-lakeside.jpg";
-import hotelMountain from "../assets/hotel-mountain.jpg";
-import hotelRainforest from "../assets/hotel-rainforest.jpg";
+import heroCoast from "../assets/hero-coast-photo.jpg.asset.json";
+import hotelOceanfront from "../assets/hotel-oceanfront-photo.jpg.asset.json";
+import hotelLakeside from "../assets/hotel-lakeside-photo.jpg.asset.json";
+import hotelMountain from "../assets/hotel-mountain-photo.jpg.asset.json";
+import hotelRainforest from "../assets/hotel-rainforest-photo.jpg.asset.json";
 import { StaySearch } from "../components/StaySearch";
 
 export const Route = createFileRoute("/")({
@@ -20,16 +20,16 @@ export const Route = createFileRoute("/")({
 });
 
 const destinations = [
-  { name: "Diani Beach", location: "Coast", image: hotelOceanfront, rating: "4.8", reviews: "Guest favourite", search: "Diani" },
-  { name: "Lake Naivasha", location: "Great Rift Valley", image: hotelLakeside, rating: "4.7", reviews: "Guest favourite", search: "Lake Naivasha" },
-  { name: "Nanyuki", location: "Mount Kenya", image: hotelMountain, rating: "4.9", reviews: "Guest favourite", search: "Nanyuki" },
-  { name: "Aberdare", location: "Central Highlands", image: hotelRainforest, rating: "4.6", reviews: "Guest favourite", search: "Aberdare" },
+  { name: "Diani Beach", location: "Coast", image: hotelOceanfront.url, rating: "4.8", reviews: "Guest favourite", search: "Diani" },
+  { name: "Lake Naivasha", location: "Great Rift Valley", image: hotelLakeside.url, rating: "4.7", reviews: "Guest favourite", search: "Lake Naivasha" },
+  { name: "Nanyuki", location: "Mount Kenya", image: hotelMountain.url, rating: "4.9", reviews: "Guest favourite", search: "Nanyuki" },
+  { name: "Aberdare", location: "Central Highlands", image: hotelRainforest.url, rating: "4.6", reviews: "Guest favourite", search: "Aberdare" },
 ];
 
 function Home() {
   return <main>
     <section className="relative min-h-[540px] overflow-hidden bg-pine text-paper sm:min-h-[590px]">
-      <img src={heroCoast} alt="Aerial view of Kenya's coastline" width={1920} height={900} className="absolute inset-0 h-full w-full object-cover" />
+      <img src={heroCoast.url} alt="Aerial view of Kenya's coastline" width={1920} height={900} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-ink/45" />
       <div className="relative mx-auto flex min-h-[540px] max-w-7xl flex-col justify-center px-6 pb-28 pt-16 sm:min-h-[590px] sm:px-10">
         <p className="mb-5 text-xs font-semibold uppercase text-paper/90">Stay somewhere worth remembering</p>
