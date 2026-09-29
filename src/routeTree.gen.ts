@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AttractionsRouteImport } from './routes/attractions'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CarRentalRouteImport } from './routes/car-rental'
+import { Route as PhotoCreditsRouteImport } from './routes/photo-credits'
 import { Route as RailRouteImport } from './routes/rail'
 import { Route as RoadRouteImport } from './routes/road'
 import { Route as SkyRouteImport } from './routes/sky'
@@ -38,6 +39,11 @@ const AuthRoute = AuthRouteImport.update({
 const CarRentalRoute = CarRentalRouteImport.update({
   id: '/car-rental',
   path: '/car-rental',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoCreditsRoute = PhotoCreditsRouteImport.update({
+  id: '/photo-credits',
+  path: '/photo-credits',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RailRoute = RailRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/attractions': typeof AttractionsRoute
   '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
@@ -88,6 +95,7 @@ export interface FileRoutesByTo {
   '/attractions': typeof AttractionsRoute
   '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
@@ -101,6 +109,7 @@ export interface FileRoutesById {
   '/attractions': typeof AttractionsRoute
   '/auth': typeof AuthRoute
   '/car-rental': typeof CarRentalRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/rail': typeof RailRoute
   '/road': typeof RoadRoute
   '/sky': typeof SkyRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/attractions'
     | '/auth'
     | '/car-rental'
+    | '/photo-credits'
     | '/rail'
     | '/road'
     | '/sky'
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/attractions'
     | '/auth'
     | '/car-rental'
+    | '/photo-credits'
     | '/rail'
     | '/road'
     | '/sky'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/attractions'
     | '/auth'
     | '/car-rental'
+    | '/photo-credits'
     | '/rail'
     | '/road'
     | '/sky'
@@ -152,6 +164,7 @@ export interface RootRouteChildren {
   AttractionsRoute: typeof AttractionsRoute
   AuthRoute: typeof AuthRoute
   CarRentalRoute: typeof CarRentalRoute
+  PhotoCreditsRoute: typeof PhotoCreditsRoute
   RailRoute: typeof RailRoute
   RoadRoute: typeof RoadRoute
   SkyRoute: typeof SkyRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/car-rental'
       fullPath: '/car-rental'
       preLoaderRoute: typeof CarRentalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo-credits': {
+      id: '/photo-credits'
+      path: '/photo-credits'
+      fullPath: '/photo-credits'
+      preLoaderRoute: typeof PhotoCreditsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rail': {
@@ -240,6 +260,7 @@ const rootRouteChildren: RootRouteChildren = {
   AttractionsRoute: AttractionsRoute,
   AuthRoute: AuthRoute,
   CarRentalRoute: CarRentalRoute,
+  PhotoCreditsRoute: PhotoCreditsRoute,
   RailRoute: RailRoute,
   RoadRoute: RoadRoute,
   SkyRoute: SkyRoute,
