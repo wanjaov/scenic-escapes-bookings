@@ -19,7 +19,7 @@ export function OfferCard({ offer, cardClass, pillClass, onBook }: OfferCardProp
           width={offer.imageWidth}
           height={offer.imageHeight}
           loading="lazy"
-          className="aspect-3/4 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
       </div>
 

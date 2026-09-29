@@ -133,7 +133,7 @@ function FeatureBand({
             width={feature.imageWidth}
             height={feature.imageHeight}
             loading="lazy"
-            className="aspect-4/5 w-full object-cover"
+            className="aspect-[16/10] max-h-80 w-full object-cover"
           />
         </div>
       </div>

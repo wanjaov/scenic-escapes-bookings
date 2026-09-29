@@ -142,6 +142,7 @@ function RootComponent() {
             A hand-set annual for bus, air, rail, water and stays. Clip it, file it, go.
           </p>
           <span className="text-sm text-muted-foreground">© 2026 Routebook Travel</span>
+          <a href="/photo-credits" className="text-sm text-primary underline">Photo credits</a>
         </footer>
       </div>
     </QueryClientProvider>
