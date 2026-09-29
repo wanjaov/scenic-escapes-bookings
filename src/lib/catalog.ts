@@ -7,7 +7,7 @@ import airBush from "../assets/air-economy-photo.jpg.asset.json";
 import railSleeper from "../assets/rail-express-photo.jpg.asset.json";
 import railExpress from "../assets/rail-express-photo.jpg.asset.json";
 import railScenic from "../assets/rail-express-photo.jpg.asset.json";
-import waterDhow from "../assets/hero-coast-photo.jpg.asset.json";
+import waterDhow from "../assets/water-dhow-photo.jpg.asset.json";
 import hotelLakeside from "../assets/hotel-lakeside-photo.jpg.asset.json";
 import hotelOceanfront from "../assets/hotel-oceanfront-photo.jpg.asset.json";
 import hotelMountain from "../assets/hotel-mountain-photo.jpg.asset.json";
