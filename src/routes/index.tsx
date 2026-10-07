@@ -7,6 +7,7 @@ import hotelMountain from "../assets/hotel-mountain-photo.jpg.asset.json";
 import hotelRainforest from "../assets/hotel-rainforest-photo.jpg.asset.json";
 import { StaySearch } from "../components/StaySearch";
 import { ExploreSections } from "../components/ExploreSections";
+import { PromoSections } from "../components/PromoSections";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -44,5 +45,6 @@ function Home() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{destinations.map((place) => <Link key={place.name} to="/stays" search={{ destination: place.search, checkIn: "", checkOut: "", adults: 2, children: 0, pets: false }} className="group overflow-hidden rounded-sm border border-border bg-card"><div className="overflow-hidden"><img src={place.image} alt={`Photograph of ${place.name}`} width={850} height={600} loading="lazy" className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-105" /></div><div className="p-4"><p className="text-xs font-medium text-muted-foreground">{place.location}</p><h3 className="mt-1 font-display text-lg font-semibold">{place.name}</h3><p className="mt-2 text-sm font-semibold">Featured stays from {place.price}/night</p><span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary">Explore <ArrowUpRight className="size-4" /></span></div></Link>)}</div>
     </section>
     <ExploreSections />
+    <PromoSections />
   </main>;
 }

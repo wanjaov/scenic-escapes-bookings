@@ -1,3 +1,4 @@
+import type { ErrorComponentProps } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -35,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -136,15 +137,35 @@ function RootComponent() {
       <div className="min-h-screen grain bg-background text-foreground">
         <SiteNav />
         <Outlet />
-        <footer className="flex flex-col items-start justify-between gap-4 px-6 py-12 sm:flex-row sm:items-baseline sm:px-10">
-          <span className="font-display text-xl font-semibold">Routebook</span>
-          <p className="text-sm text-muted-foreground">
-            A hand-set annual for bus, air, rail, water and stays. Clip it, file it, go.
-          </p>
-          <span className="text-sm text-muted-foreground">© 2026 Routebook Travel</span>
-          <a href="/photo-credits" className="text-sm text-primary underline">Photo credits</a>
+        <footer className="border-t border-border bg-card px-6 pt-10 pb-6 sm:px-10">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+            {FOOTER.map(([title, links]) => (
+              <div key={title}>
+                <h3 className="font-display text-sm font-semibold">{title}</h3>
+                <ul className="mt-3 space-y-2">
+                  {links.map((l) => (
+                    <li key={l}>
+                      <a href="/" className="text-sm text-muted-foreground transition-colors hover:text-primary hover:underline">{l}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="mx-auto mt-8 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-border pt-4 text-sm text-muted-foreground">
+            <span>© 2026 Routebook Travel</span>
+            <a href="/photo-credits" className="text-primary underline">Photo credits</a>
+          </div>
         </footer>
       </div>
     </QueryClientProvider>
   );
 }
+
+const FOOTER: [string, string[]][] = [
+  ["Support", ["Manage your trips", "Contact customer service", "Safety Resource Center"]],
+  ["Discover", ["Genius loyalty program", "Seasonal and holiday deals", "Travel articles", "Routebook.com for business"]],
+  ["Terms & Settings", ["Privacy Notice", "Terms of Service", "Accessibility Statement", "Partner dispute"]],
+  ["Partners", ["Extranet login", "Partner help", "List your property", "Become an affiliate"]],
+  ["About", ["About Routebook.com", "How we work", "Sustainability", "Press center", "Careers"]],
+];
