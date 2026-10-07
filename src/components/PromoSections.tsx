@@ -71,7 +71,7 @@ export function PromoSections() {
         <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {TABS[tab].map((name) => (
             <li key={name}>
-              <Link to="/stays" search={{ destination: name }} className="block rounded-lg px-3 py-2 text-sm transition hover:bg-secondary hover:text-primary">
+              <Link to="/stays" search={{ destination: name, checkIn: "", checkOut: "", adults: 2, children: 0, pets: false }} className="block rounded-lg px-3 py-2 text-sm transition hover:bg-secondary hover:text-primary">
                 {name}
               </Link>
             </li>
