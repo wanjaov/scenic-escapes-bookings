@@ -160,3 +160,11 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
+const FOOTER: [string, string[]][] = [
+  ["Support", ["Manage your trips", "Contact customer service", "Safety Resource Center"]],
+  ["Discover", ["Genius loyalty program", "Seasonal and holiday deals", "Travel articles", "Routebook.com for business"]],
+  ["Terms & Settings", ["Privacy Notice", "Terms of Service", "Accessibility Statement", "Partner dispute"]],
+  ["Partners", ["Extranet login", "Partner help", "List your property", "Become an affiliate"]],
+  ["About", ["About Routebook.com", "How we work", "Sustainability", "Press center", "Careers"]],
+];
