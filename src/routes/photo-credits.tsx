@@ -12,6 +12,14 @@ const photos = [
   ["Kenya Airways aircraft", "Seychelles Tourism Board", "CC BY 4.0", "Kenya_Airways_aircraft.jpg"],
   ["Kenya Railways train", "Erasmus Kamugisha", "CC BY-SA 4.0", "Kenya_Railways_DF8B_locomotive_on_the_new_SGR_line,_06-06-2017.jpg"],
   ["Lamu dhow", "Wikimedia Commons contributor", "CC BY-SA 4.0", "A_dhow_in_Lamu_Island.jpg"],
+  ["Watamu Beach", "Jenny Kellett", "CC BY-SA 4.0", "Watamu_Beach,_Kenya_Starfish.jpg"],
+  ["Malindi Beach", "Tall Black", "CC BY-SA 4.0", "Malindi_Beach%27s_diverse_activities.jpg"],
+  ["Shela Beach, Lamu", "Bingar1234", "CC BY-SA 4.0", "Shela_beach_1.jpg"],
+  ["Mombasa Beach Hotel, Nyali", "CT Cooper", "CC BY 3.0", "Mombasa_Beach_Hotel_from_Nyali_Beach,_Mombasa,_Kenya.jpg"],
+  ["Southern Palms pool", "John Hickey-Fry", "CC BY 2.0", "Southern_Palms_-_Pool_1.jpg"],
+  ["Giraffe Manor", "Push the button", "CC BY-SA 3.0", "Giraffe_Manor,_Nairobi,_Kenya.jpg"],
+  ["Ol Moran tented camp", "shankar s.", "CC BY 2.0", "Ol_Moran_tented_camp_(7512970152).jpg"],
+  ["Fairmont Mount Kenya Safari Club", "John Hickey-Fry", "CC BY 2.0", "Fairmont_Mount_Kenya_Safari_Club_Resort.jpg"],
 ];
 
 export const Route = createFileRoute("/photo-credits")({
