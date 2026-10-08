@@ -26,10 +26,8 @@ function GiftBox() {
   );
 }
 
-export function PromoSections() {
-  const [tab, setTab] = useState<Tab>("Domestic cities");
+export function TravelMoreSection() {
   return (
-    <>
       <section className="mx-auto max-w-6xl px-6 py-10 sm:px-10">
         <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Travel more, spend less.</h2>
@@ -50,7 +48,14 @@ export function PromoSections() {
           </div>
         </div>
       </section>
+  );
+}
 
+export function PromoSections() {
+  const [tab, setTab] = useState<Tab>("Domestic cities");
+  return (
+    <>
+      <TravelMoreSection />
       <section className="mx-auto max-w-6xl px-6 pb-12 sm:px-10">
         <h2 className="font-display text-2xl font-semibold sm:text-3xl">Popular with travellers from Kenya</h2>
         <div role="tablist" className="mt-4 flex gap-2 overflow-x-auto border-b border-border pb-2">
