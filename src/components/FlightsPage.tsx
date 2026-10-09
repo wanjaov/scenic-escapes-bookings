@@ -59,7 +59,7 @@ const PLACES: [string, string, string][] = [
   ["Nairobi Wilson", "WIL", "Wilson Airport · domestic hub"],
 ];
 
-const PROS = [
+const PROS: { t: string; d: string; icons: [typeof Plane, typeof Plane] }[] = [
   { t: "Plan with AI", d: "Get travel questions answered.", icons: [UserRound, Bot] },
   { t: "Airfare trends", d: "See weekly trends in flights.", icons: [Plane, TrendingUp] },
   { t: "Monthly flight deals", d: "See great prices from your local airport.", icons: [CalendarDays, Plane] },
