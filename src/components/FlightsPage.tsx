@@ -29,11 +29,11 @@ const DEALS = [
   { to: "Malindi", code: "MYD", img: malindi.url, price: 10500, dur: "1h 10m" },
   { to: "Ukunda (Diani)", code: "UKA", img: diani.url, price: 12500, dur: "1h 15m" },
   { to: "Lamu", code: "LAU", img: lamu.url, price: 16500, dur: "1h 40m" },
-  { to: "Eldoret", code: "EDL", img: road.url, price: 8800, dur: "55m" },
+  { to: "Amboseli", code: "ASV", img: road.url, price: 26000, dur: "50m" },
   { to: "Maasai Mara (Keekorok)", code: "KEU", img: mara.url, price: 28000, dur: "45m" },
   { to: "Nanyuki", code: "NYK", img: mountain.url, price: 15500, dur: "50m" },
   { to: "Watamu via Malindi", code: "MYD", img: watamu.url, price: 10900, dur: "1h 10m" },
-  { to: "Kitale", code: "KTL", img: dhow.url, price: 11000, dur: "1h 05m" },
+  { to: "Shimoni via Ukunda", code: "UKA", img: dhow.url, price: 12900, dur: "1h 15m" },
 ];
 
 const PLACES: [string, string, string][] = [
