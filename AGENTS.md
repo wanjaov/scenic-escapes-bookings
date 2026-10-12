@@ -11,3 +11,4 @@
 
 - Keep the public stay search in a dedicated component and pass validated URL search fields to the existing stays listing; this keeps search state shareable without changing the original offer catalogue.
 - Keep account entry on a public `/auth` route using Lovable Cloud's generated browser client; no protected loader is needed for sign-in and registration.
+- Keep rental search in a dedicated public component, validating locations and chronological dates before presenting a search summary; do not imply live inventory until a provider is connected.
