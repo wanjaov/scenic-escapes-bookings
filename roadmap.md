@@ -1,4 +1,4 @@
-- [ ] Recreate the reference car-rental page in project colours with real photos, working search fields, and quick filters.
+- [x] Recreate the reference car-rental page in project colours with real photos, working search fields, and quick filters.
 - [ ] Build stay-first homepage with destination, dates, guests, pets, and rated destination offers.
 - [ ] Add navigation destinations for stays, flights, car rental, attractions, transfers.
 - [ ] Add working registration and sign-in pages.
