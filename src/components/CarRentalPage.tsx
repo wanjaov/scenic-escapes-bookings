@@ -6,6 +6,7 @@ import scenery from "../assets/hero-coast-photo.jpg.asset.json";
 import safari from "../assets/attractions-photo.jpg.asset.json";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
+import { RentalHighlights } from "./RentalHighlights";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const LOCATIONS = ["Nairobi — Jomo Kenyatta Airport", "Nairobi — Wilson Airport", "Nairobi city centre", "Mombasa — Moi Airport", "Diani — Ukunda Airport", "Kisumu Airport", "Naivasha", "Nanyuki"];
@@ -54,6 +55,7 @@ export function CarRentalPage() {
   }
 
   return <main>
+    <RentalHighlights />
     <section className="bg-pine text-paper">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pb-16 pt-9 sm:px-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12 lg:pb-20 lg:pt-12">
         <div>
