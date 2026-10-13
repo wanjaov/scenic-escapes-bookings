@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 const photos = [
+  ["Fort Jesus, Mombasa", "Corneliusgathungu", "CC BY-SA 4.0", "Fort_Jesus,_Mombasa,_view_of_the_Indian_Ocean_and_a_new_hotel_construction.jpg"],
+  ["Paris riverside", "Benh LIEU SONG", "CC BY-SA 3.0", "Paris_75005_Quai_de_Montebello_Bouquinistes_20071014.jpg"],
+  ["Istanbul", "Mstyslav Chernov", "CC BY-SA 3.0", "Panoramic_view_of_Istanbul-_Yeni_Cami_(The_New_Mosque),_Galata_Bridge._Turkey,_Southeastern_Europe.jpg"],
+  ["Sydney Harbour Bridge", "JJ Harrison", "CC BY-SA 3.0", "Sydney_Harbour_Bridge_from_Circular_Quay.jpg"],
+  ["Central Park, New York", "Jet Lowe", "Public domain", "Central_Park_New_York_City_New_York_23_cropped.jpg"],
   ["Kenya coast", "Waigera L W", "CC BY-SA 4.0", "Aerial_views_of_Coast_Bandas.jpg"],
   ["Diani Beach", "FredD", "CC BY-SA 3.0", "Diani_beach.JPG"],
   ["Lake Naivasha", "Kenenock", "CC BY-SA 4.0", "Lake_Naivasha_Shoreline.jpg"],
