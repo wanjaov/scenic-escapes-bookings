@@ -1,5 +1,7 @@
 - [x] Recreate the reference car-rental page in project colours with real photos, working search fields, and quick filters.
 - [x] Add rental company, savings and service highlights directly after navigation using the uploaded reference.
+- [ ] Arrange Attractions in the three reference layouts with real photos, destination search, region tabs and a Kenyan attractions directory with locations and honest review status.
+- [ ] Move car-rental booking search directly below navigation and verify both pages.
 - [ ] Build stay-first homepage with destination, dates, guests, pets, and rated destination offers.
 - [ ] Add navigation destinations for stays, flights, car rental, attractions, transfers.
 - [ ] Add working registration and sign-in pages.
