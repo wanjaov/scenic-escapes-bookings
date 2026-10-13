@@ -1,3 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import attraction from "../assets/attractions-photo.jpg.asset.json";
-export const Route = createFileRoute("/attractions")({ head: () => ({ meta: [{ title: "Attractions | Routebook" }, { name: "description", content: "Explore Kenya's attractions with Routebook." }, { property: "og:title", content: "Attractions | Routebook" }, { property: "og:description", content: "Explore Kenya's attractions with Routebook." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: () => <main className="mx-auto max-w-6xl px-6 py-16 sm:px-10"><p className="text-xs font-semibold uppercase text-terra-deep">Explore Kenya</p><h1 className="mt-3 text-5xl">Attractions</h1><p className="mt-4 max-w-xl text-muted-foreground">Discover the places that make a trip memorable. Attraction listings are coming soon.</p><img src={attraction.url} alt="Safari in the Maasai Mara" width={808} height={600} className="mt-10 aspect-[16/9] max-h-96 w-full object-cover" /></main> });
+import { AttractionsPage } from "../components/AttractionsPage";
+export const Route = createFileRoute("/attractions")({
+  head: () => ({ meta: [
+    { title: "Kenya Attractions, Activities & Experiences | Routebook" },
+    { name: "description", content: "Explore Kenya's parks, beaches, museums and heritage sites. Find attraction locations, visitor review links and destination inspiration with Routebook." },
+    { property: "og:title", content: "Kenya Attractions, Activities & Experiences | Routebook" },
+    { property: "og:description", content: "Discover Kenyan attractions, filter by destination and explore locations and visitor review links." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
+  component: AttractionsPage,
+});
