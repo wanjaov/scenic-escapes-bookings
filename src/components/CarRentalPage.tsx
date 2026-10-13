@@ -55,23 +55,7 @@ export function CarRentalPage() {
   }
 
   return <main>
-    <RentalHighlights />
-    <section className="bg-pine text-paper">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pb-16 pt-9 sm:px-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12 lg:pb-20 lg:pt-12">
-        <div>
-          <p className="mb-4 text-sm font-semibold text-ochre">Preview promotion · not currently available</p>
-          <h1 className="max-w-2xl text-4xl leading-tight sm:text-5xl lg:text-6xl">Up to 15% off on rental cars</h1>
-          <p className="mt-6 text-lg text-paper/95">Enjoy the freedom of the open road. <Button variant="link" onClick={() => setTermsOpen(true)} className="h-auto p-0 text-lg text-paper underline">Terms apply.</Button></p>
-          <p className="mt-4 text-sm text-paper/80">Offer dates and participating rental providers to be confirmed.</p>
-        </div>
-        <div className="grid h-48 grid-cols-[1.2fr_0.9fr] grid-rows-2 gap-3 sm:h-64 lg:h-80">
-          <img src={car.url} alt="Safari rental vehicles in Kenya" width={850} height={600} className="row-span-2 h-full w-full rounded-lg object-cover" />
-          <img src={scenery.url} alt="Kenyan coast seen from above" width={850} height={600} className="h-full w-full rounded-lg object-cover" />
-          <img src={safari.url} alt="Exploring Kenya on safari" width={850} height={600} className="h-full w-full rounded-lg object-cover" />
-        </div>
-      </div>
-    </section>
-    <section aria-label="Car rental search" className="relative mx-auto -mt-8 max-w-7xl px-4 pb-12 sm:px-10">
+    <section aria-label="Car rental search" className="relative mx-auto max-w-7xl px-4 pb-10 pt-7 sm:px-10">
       <form onSubmit={search}>
         <div className="grid gap-1 rounded-lg border-4 border-ochre bg-ochre shadow-lg sm:grid-cols-2 lg:grid-cols-[minmax(220px,2fr)_minmax(150px,1fr)_minmax(115px,0.8fr)_minmax(150px,1fr)_minmax(115px,0.8fr)_auto]">
           <label className="flex min-w-0 items-center gap-3 rounded-sm bg-background px-4 py-2 sm:col-span-2 lg:col-span-1"><Search className="size-6 shrink-0 text-muted-foreground" /><span className="min-w-0 flex-1"><span className="block text-xs text-muted-foreground">Pick-up location</span><input aria-label="Pick-up location" required list="rental-locations" placeholder="Airport, city, or station" value={pickup} onChange={(e) => setPickup(e.target.value)} className={fieldClass} /></span></label>
@@ -99,6 +83,22 @@ export function CarRentalPage() {
       {result && <div role="status" className="mt-8 border-y border-border py-6"><p className="mb-2 text-sm font-semibold text-terra-deep">Your rental search</p><p className="text-sm leading-relaxed">{result}</p><h2 className="mt-5 text-2xl">No live rental listings yet</h2><p className="mt-2 text-sm text-muted-foreground">Rental providers and availability haven’t been connected. No booking or payment has been made.</p></div>}
       <div className="mt-12 flex items-start gap-4 border-t border-border pt-7"><CarFront className="mt-1 size-7 shrink-0 text-terra-deep" /><div><h2 className="text-2xl">Car rental in Kenya</h2><p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">From the city to the coast, plan your next journey at your own pace.</p></div></div>
     </section>
+    <section className="bg-pine text-paper">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 pb-16 pt-9 sm:px-10 lg:grid-cols-[1.3fr_1fr] lg:gap-12 lg:pb-20 lg:pt-12">
+        <div>
+          <p className="mb-4 text-sm font-semibold text-ochre">Preview promotion · not currently available</p>
+          <h1 className="max-w-2xl text-4xl leading-tight sm:text-5xl lg:text-6xl">Up to 15% off on rental cars</h1>
+          <p className="mt-6 text-lg text-paper/95">Enjoy the freedom of the open road. <Button variant="link" onClick={() => setTermsOpen(true)} className="h-auto p-0 text-lg text-paper underline">Terms apply.</Button></p>
+          <p className="mt-4 text-sm text-paper/80">Offer dates and participating rental providers to be confirmed.</p>
+        </div>
+        <div className="grid h-48 grid-cols-[1.2fr_0.9fr] grid-rows-2 gap-3 sm:h-64 lg:h-80">
+          <img src={car.url} alt="Safari rental vehicles in Kenya" width={850} height={600} className="row-span-2 h-full w-full rounded-lg object-cover" />
+          <img src={scenery.url} alt="Kenyan coast seen from above" width={850} height={600} className="h-full w-full rounded-lg object-cover" />
+          <img src={safari.url} alt="Exploring Kenya on safari" width={850} height={600} className="h-full w-full rounded-lg object-cover" />
+        </div>
+      </div>
+    </section>
+    <RentalHighlights />
     <Dialog open={termsOpen} onOpenChange={setTermsOpen}><DialogContent className="max-w-[min(92vw,480px)]"><DialogHeader><DialogTitle>Rental promotion terms</DialogTitle><DialogDescription className="pt-3 leading-relaxed">The 15% promotion is a design preview, not an active offer. No discount, countdown or participating provider is confirmed. Actual prices, eligibility, driver age rules and rental terms will be supplied by the rental provider before booking.</DialogDescription></DialogHeader></DialogContent></Dialog>
   </main>;
 }
