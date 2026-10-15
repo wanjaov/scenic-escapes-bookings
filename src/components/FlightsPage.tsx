@@ -140,7 +140,7 @@ export function FlightsPage() {
         </div>
       </section>
 
-      <div className="sticky top-0 z-30 border-b border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:px-8">
+      <div className="relative z-30 border-b border-border bg-card/95 px-4 py-3 shadow-sm backdrop-blur sm:px-8">
         <form onSubmit={(e) => { e.preventDefault(); search(); }} className="mx-auto max-w-7xl">
           <div className="mb-2 flex flex-wrap items-center gap-1" role="radiogroup" aria-label="Trip type">
             {(["Round trip", "One way", "Multi city"] as TripType[]).map((t) => (
