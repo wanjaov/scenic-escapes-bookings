@@ -11,7 +11,7 @@ const COMPANIES = [
 export function RentalHighlights() {
   return (
     <>
-      <section aria-labelledby="rental-companies" className="mx-auto max-w-7xl px-6 pb-10 pt-9 sm:px-10">
+      <section aria-labelledby="rental-companies" className="mx-auto max-w-7xl border-t border-border px-6 pb-10 pt-9 sm:px-10">
         <h2 id="rental-companies" className="text-2xl sm:text-3xl">Popular rental car companies</h2>
         <div className="mt-6 grid max-w-xl grid-cols-3 gap-3 sm:gap-6">
           {COMPANIES.map((company) => (
@@ -24,7 +24,15 @@ export function RentalHighlights() {
         <p className="mt-4 text-xs text-muted-foreground">Independent company websites. No partnership or rental availability is confirmed.</p>
       </section>
 
-      <section aria-labelledby="rental-savings" className="mx-auto max-w-7xl px-6 pb-10 sm:px-10">
+      <section aria-label="Rental travel essentials" className="bg-secondary">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-9 sm:px-10 lg:grid-cols-3">
+          <div className="flex items-start gap-4"><Headset aria-hidden="true" className="size-10 shrink-0 text-primary" /><div><h3 className="text-lg">We're here for you</h3><p className="mt-2 text-sm text-muted-foreground">Customer support options and languages will be confirmed by your rental provider.</p></div></div>
+          <div className="flex items-start gap-4"><CalendarCheck aria-hidden="true" className="size-10 shrink-0 text-pine" /><div><h3 className="text-lg">Free cancellation</h3><p className="mt-2 text-sm text-muted-foreground">Cancellation windows vary. Check the provider’s policy before booking.</p></div></div>
+          <div className="flex items-start gap-4"><ThumbsUp aria-hidden="true" className="size-10 shrink-0 text-terra-deep" /><div><h3 className="text-lg">Verified customer reviews</h3><p className="mt-2 text-sm text-muted-foreground">Verified rental reviews are not available yet.</p></div></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="rental-savings" className="mx-auto max-w-7xl px-6 py-10 sm:px-10">
         <h2 id="rental-savings" className="text-2xl sm:text-3xl">Travel more, spend less</h2>
         <div className="mt-5 flex items-center justify-between gap-6 border-y border-border py-7 sm:gap-10">
           <div className="min-w-0">
@@ -40,13 +48,6 @@ export function RentalHighlights() {
         </div>
       </section>
 
-      <section aria-label="Rental travel essentials" className="bg-secondary">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-9 sm:px-10 lg:grid-cols-3">
-          <div className="flex items-start gap-4"><Headset aria-hidden="true" className="size-10 shrink-0 text-primary" /><div><h3 className="text-lg">We're here for you</h3><p className="mt-2 text-sm text-muted-foreground">Customer support options and languages will be confirmed by your rental provider.</p></div></div>
-          <div className="flex items-start gap-4"><CalendarCheck aria-hidden="true" className="size-10 shrink-0 text-pine" /><div><h3 className="text-lg">Free cancellation</h3><p className="mt-2 text-sm text-muted-foreground">Cancellation windows vary. Check the provider’s policy before booking.</p></div></div>
-          <div className="flex items-start gap-4"><ThumbsUp aria-hidden="true" className="size-10 shrink-0 text-terra-deep" /><div><h3 className="text-lg">Verified customer reviews</h3><p className="mt-2 text-sm text-muted-foreground">Verified rental reviews are not available yet.</p></div></div>
-        </div>
-      </section>
     </>
   );
 }
