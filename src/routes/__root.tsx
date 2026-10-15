@@ -5,7 +5,6 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -14,7 +13,6 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteNav } from "../components/SiteNav";
-import { RentalPromo } from "../components/RentalPromo";
 
 function NotFoundComponent() {
   return (
@@ -133,12 +131,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen grain bg-background text-foreground">
-        {pathname === "/car-rental" && <RentalPromo />}
         <SiteNav />
         <Outlet />
         <footer className="border-t border-border bg-card px-6 pt-10 pb-6 sm:px-10">

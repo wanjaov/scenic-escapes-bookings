@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { addDays, format } from "date-fns";
-import { CarFront, Clock3, MapPin, Search, SlidersHorizontal } from "lucide-react";
+import { Clock3, MapPin, Search, SlidersHorizontal } from "lucide-react";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { RentalHighlights } from "./RentalHighlights";
@@ -51,6 +51,10 @@ export function CarRentalPage() {
 
   return <main>
     <section aria-label="Car rental search" className="relative mx-auto max-w-7xl px-4 pb-10 pt-7 sm:px-10">
+      <div className="mb-6">
+        <h1 className="text-3xl sm:text-4xl">Car rental in Kenya</h1>
+        <p className="mt-2 text-sm text-muted-foreground sm:text-base">From the city to the coast, plan your next journey at your own pace.</p>
+      </div>
       <form onSubmit={search}>
         <div className="grid gap-1 rounded-lg border-4 border-ochre bg-ochre shadow-lg sm:grid-cols-2 lg:grid-cols-[minmax(220px,2fr)_minmax(150px,1fr)_minmax(115px,0.8fr)_minmax(150px,1fr)_minmax(115px,0.8fr)_auto]">
           <label className="flex min-w-0 items-center gap-3 rounded-sm bg-background px-4 py-2 sm:col-span-2 lg:col-span-1"><Search className="size-6 shrink-0 text-muted-foreground" /><span className="min-w-0 flex-1"><span className="block text-xs text-muted-foreground">Pick-up location</span><input aria-label="Pick-up location" required list="rental-locations" placeholder="Airport, city, or station" value={pickup} onChange={(e) => setPickup(e.target.value)} className={fieldClass} /></span></label>
@@ -76,7 +80,6 @@ export function CarRentalPage() {
         {error && <p role="alert" className="mt-5 text-sm text-destructive">{error}</p>}
       </form>
       {result && <div role="status" className="mt-8 border-y border-border py-6"><p className="mb-2 text-sm font-semibold text-terra-deep">Your rental search</p><p className="text-sm leading-relaxed">{result}</p><h2 className="mt-5 text-2xl">No live rental listings yet</h2><p className="mt-2 text-sm text-muted-foreground">Rental providers and availability haven’t been connected. No booking or payment has been made.</p></div>}
-      <div className="mt-12 flex items-start gap-4 border-t border-border pt-7"><CarFront className="mt-1 size-7 shrink-0 text-terra-deep" /><div><h2 className="text-2xl">Car rental in Kenya</h2><p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">From the city to the coast, plan your next journey at your own pace.</p></div></div>
     </section>
     <RentalHighlights />
   </main>;
