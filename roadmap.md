@@ -1,4 +1,4 @@
-- [ ] Apply and verify the chosen car-rental order: navigation, heading and booking, companies, services, savings.
+- [x] Apply and verify the chosen car-rental order: navigation, heading and booking, companies, services, savings.
 - [x] Recreate the reference car-rental page in project colours with real photos, working search fields, and quick filters.
 - [x] Add rental company, savings and service highlights directly after navigation using the uploaded reference.
 - [ ] Arrange Attractions in the three reference layouts with real photos, destination search, region tabs and a Kenyan attractions directory with locations and honest review status.
