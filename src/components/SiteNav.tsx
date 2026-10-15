@@ -11,7 +11,6 @@ const LINKS = [
   { to: "/sky", label: "Flights" },
   { to: "/car-rental", label: "Car Rental" },
   { to: "/attractions", label: "Attractions" },
-  { to: "/transfers", label: "Transfers" },
 ] as const;
 
 export function SiteNav() {
