@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import { addDays, format } from "date-fns";
 import { CarFront, Clock3, MapPin, Search, SlidersHorizontal } from "lucide-react";
-import car from "../assets/car-rental-photo.jpg.asset.json";
-import scenery from "../assets/hero-coast-photo.jpg.asset.json";
-import safari from "../assets/attractions-photo.jpg.asset.json";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { RentalHighlights } from "./RentalHighlights";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
 
 const LOCATIONS = ["Nairobi — Jomo Kenyatta Airport", "Nairobi — Wilson Airport", "Nairobi city centre", "Mombasa — Moi Airport", "Diani — Ukunda Airport", "Kisumu Airport", "Naivasha", "Nanyuki"];
 const fieldClass = "h-10 w-full min-w-0 bg-transparent text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm";
@@ -27,7 +23,6 @@ export function CarRentalPage() {
   const [carType, setCarType] = useState("Any car type");
   const [transmission, setTransmission] = useState("Any transmission");
   const [airConditioning, setAirConditioning] = useState(false);
-  const [termsOpen, setTermsOpen] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState("");
 
