@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SiteNav } from "../components/SiteNav";
+import { AuthProvider, useAccount } from "../components/AuthProvider";
 
 function NotFoundComponent() {
   return (
@@ -134,10 +134,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AuthProvider><SiteFrame /></AuthProvider>
+    </QueryClientProvider>
+  );
+}
+
+function SiteFrame() {
+  const { user } = useAccount();
+  return (
       <div className="min-h-screen grain bg-background text-foreground">
-        <SiteNav />
         <Outlet />
-        <footer className="border-t border-border bg-card px-6 pt-10 pb-6 sm:px-10">
+        {user && <footer className="border-t border-border bg-card px-6 pt-10 pb-6 sm:px-10">
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {FOOTER.map(([title, links]) => (
               <div key={title}>
@@ -156,9 +163,8 @@ function RootComponent() {
             <span>© 2026 Routebook Travel</span>
             <a href="/photo-credits" className="text-primary underline">Photo credits</a>
           </div>
-        </footer>
+        </footer>}
       </div>
-    </QueryClientProvider>
   );
 }
 
