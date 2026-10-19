@@ -27,7 +27,7 @@ const photos = [
   ["Fairmont Mount Kenya Safari Club", "John Hickey-Fry", "CC BY 2.0", "Fairmont_Mount_Kenya_Safari_Club_Resort.jpg"],
 ];
 
-export const Route = createFileRoute("/photo-credits")({
+export const Route = createFileRoute("/_authenticated/photo-credits")({
   head: () => ({ meta: [
     { title: "Photo credits | Routebook" },
     { name: "description", content: "Credits and licenses for authentic travel photography used by Routebook." },

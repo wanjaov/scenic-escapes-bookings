@@ -5,6 +5,11 @@ let bookings: Booking[] = [];
 const listeners = new Set<() => void>();
 const EMPTY: Booking[] = [];
 
+export function clearBookings() {
+  bookings = [];
+  listeners.forEach((l) => l());
+}
+
 export function addBooking(booking: Booking) {
   bookings = [booking, ...bookings];
   listeners.forEach((l) => l());

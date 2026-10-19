@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import heroCoast from "../assets/hero-coast-photo.jpg.asset.json";
-import hotelOceanfront from "../assets/hotel-oceanfront-photo.jpg.asset.json";
-import hotelLakeside from "../assets/hotel-lakeside-photo.jpg.asset.json";
-import hotelMountain from "../assets/hotel-mountain-photo.jpg.asset.json";
-import hotelRainforest from "../assets/hotel-rainforest-photo.jpg.asset.json";
-import { StaySearch } from "../components/StaySearch";
-import { ExploreSections } from "../components/ExploreSections";
-import { PromoSections } from "../components/PromoSections";
+import heroCoast from "../../assets/hero-coast-photo.jpg.asset.json";
+import hotelOceanfront from "../../assets/hotel-oceanfront-photo.jpg.asset.json";
+import hotelLakeside from "../../assets/hotel-lakeside-photo.jpg.asset.json";
+import hotelMountain from "../../assets/hotel-mountain-photo.jpg.asset.json";
+import hotelRainforest from "../../assets/hotel-rainforest-photo.jpg.asset.json";
+import { StaySearch } from "../../components/StaySearch";
+import { ExploreSections } from "../../components/ExploreSections";
+import { PromoSections } from "../../components/PromoSections";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/")({
   head: () => ({ meta: [
     { title: "Find your next stay in Kenya | Routebook" },
     { name: "description", content: "Explore scenic stays and destination offers across Kenya. Choose dates and guests, then find your next stay." },

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FlightsPage } from "../components/FlightsPage";
+import { FlightsPage } from "../../components/FlightsPage";
 
-export const Route = createFileRoute("/sky")({
+export const Route = createFileRoute("/_authenticated/sky")({
   head: () => ({
     meta: [
       { title: "Flights in Kenya — compare and search | Routebook" },
