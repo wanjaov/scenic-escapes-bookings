@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { CarRentalPage } from "../../components/CarRentalPage";
+export const Route = createFileRoute("/_authenticated/car-rental")({ head: () => ({ meta: [{ title: "Car Rental in Kenya | Routebook" }, { name: "description", content: "Plan car rental in Kenya with pick-up and drop-off locations, travel dates, driver age and car preferences." }, { property: "og:title", content: "Car Rental in Kenya | Routebook" }, { property: "og:description", content: "Plan your next drive with rental locations, travel dates and car preferences across Kenya." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }), component: CarRentalPage });

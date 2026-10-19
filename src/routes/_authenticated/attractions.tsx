@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AttractionsPage } from "../components/AttractionsPage";
-export const Route = createFileRoute("/attractions")({
+import { AttractionsPage } from "../../components/AttractionsPage";
+export const Route = createFileRoute("/_authenticated/attractions")({
   head: () => ({ meta: [
     { title: "Kenya Attractions, Activities & Experiences | Routebook" },
     { name: "description", content: "Explore Kenya's parks, beaches, museums and heritage sites. Find attraction locations, visitor review links and destination inspiration with Routebook." },

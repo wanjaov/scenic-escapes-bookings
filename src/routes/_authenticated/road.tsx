@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CategoryPage } from "../components/CategoryPage";
+import { CategoryPage } from "../../components/CategoryPage";
 
-export const Route = createFileRoute("/road")({
+export const Route = createFileRoute("/_authenticated/road")({
   head: () => ({
     meta: [
       { title: "Bus & coach tickets — Routebook" },

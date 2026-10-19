@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CategoryPage } from "../components/CategoryPage";
-import { StaySearch } from "../components/StaySearch";
-import { StaysLanding } from "../components/StaysLanding";
+import { CategoryPage } from "../../components/CategoryPage";
+import { StaySearch } from "../../components/StaySearch";
+import { StaysLanding } from "../../components/StaysLanding";
 
-export const Route = createFileRoute("/stays")({
+export const Route = createFileRoute("/_authenticated/stays")({
   validateSearch: (search: Record<string, unknown>) => ({
     destination: typeof search['destination'] === "string" && search['destination'].length <= 80 ? search['destination'] : "",
     checkIn: typeof search['checkIn'] === "string" && /^\d{4}-\d{2}-\d{2}$/.test(search['checkIn']) ? search['checkIn'] : "",
