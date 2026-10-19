@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedAttractionsRouteImport } from './routes/_authenticated/attractions'
@@ -21,65 +22,70 @@ import { Route as AuthenticatedStaysRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedTransfersRouteImport } from './routes/_authenticated/transfers'
 import { Route as AuthenticatedWaterRouteImport } from './routes/_authenticated/water'
 
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
-  id: '/_authenticated/',
+  id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedAttractionsRoute =
   AuthenticatedAttractionsRouteImport.update({
-    id: '/_authenticated/attractions',
+    id: '/attractions',
     path: '/attractions',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedCarRentalRoute = AuthenticatedCarRentalRouteImport.update({
-  id: '/_authenticated/car-rental',
+  id: '/car-rental',
   path: '/car-rental',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedPhotoCreditsRoute =
   AuthenticatedPhotoCreditsRouteImport.update({
-    id: '/_authenticated/photo-credits',
+    id: '/photo-credits',
     path: '/photo-credits',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedRailRoute = AuthenticatedRailRouteImport.update({
-  id: '/_authenticated/rail',
+  id: '/rail',
   path: '/rail',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedRoadRoute = AuthenticatedRoadRouteImport.update({
-  id: '/_authenticated/road',
+  id: '/road',
   path: '/road',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedSkyRoute = AuthenticatedSkyRouteImport.update({
-  id: '/_authenticated/sky',
+  id: '/sky',
   path: '/sky',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedStaysRoute = AuthenticatedStaysRouteImport.update({
-  id: '/_authenticated/stays',
+  id: '/stays',
   path: '/stays',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedTransfersRoute = AuthenticatedTransfersRouteImport.update({
-  id: '/_authenticated/transfers',
+  id: '/transfers',
   path: '/transfers',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedWaterRoute = AuthenticatedWaterRouteImport.update({
-  id: '/_authenticated/water',
+  id: '/water',
   path: '/water',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AuthenticatedIndexRoute
   '/auth': typeof AuthRoute
   '/attractions': typeof AuthenticatedAttractionsRoute
   '/car-rental': typeof AuthenticatedCarRentalRoute
@@ -90,7 +96,6 @@ export interface FileRoutesByFullPath {
   '/stays': typeof AuthenticatedStaysRoute
   '/transfers': typeof AuthenticatedTransfersRoute
   '/water': typeof AuthenticatedWaterRoute
-  '/': typeof AuthenticatedIndexRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
@@ -107,6 +112,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/attractions': typeof AuthenticatedAttractionsRoute
   '/_authenticated/car-rental': typeof AuthenticatedCarRentalRoute
@@ -122,6 +128,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/auth'
     | '/attractions'
     | '/car-rental'
@@ -132,7 +139,6 @@ export interface FileRouteTypes {
     | '/stays'
     | '/transfers'
     | '/water'
-    | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/auth'
@@ -148,6 +154,7 @@ export interface FileRouteTypes {
     | '/'
   id:
     | '__root__'
+    | '/_authenticated'
     | '/auth'
     | '/_authenticated/attractions'
     | '/_authenticated/car-rental'
@@ -162,21 +169,19 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
-  AuthenticatedAttractionsRoute: typeof AuthenticatedAttractionsRoute
-  AuthenticatedCarRentalRoute: typeof AuthenticatedCarRentalRoute
-  AuthenticatedPhotoCreditsRoute: typeof AuthenticatedPhotoCreditsRoute
-  AuthenticatedRailRoute: typeof AuthenticatedRailRoute
-  AuthenticatedRoadRoute: typeof AuthenticatedRoadRoute
-  AuthenticatedSkyRoute: typeof AuthenticatedSkyRoute
-  AuthenticatedStaysRoute: typeof AuthenticatedStaysRoute
-  AuthenticatedTransfersRoute: typeof AuthenticatedTransfersRoute
-  AuthenticatedWaterRoute: typeof AuthenticatedWaterRoute
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -189,76 +194,88 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/attractions': {
       id: '/_authenticated/attractions'
       path: '/attractions'
       fullPath: '/attractions'
       preLoaderRoute: typeof AuthenticatedAttractionsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/car-rental': {
       id: '/_authenticated/car-rental'
       path: '/car-rental'
       fullPath: '/car-rental'
       preLoaderRoute: typeof AuthenticatedCarRentalRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/photo-credits': {
       id: '/_authenticated/photo-credits'
       path: '/photo-credits'
       fullPath: '/photo-credits'
       preLoaderRoute: typeof AuthenticatedPhotoCreditsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/rail': {
       id: '/_authenticated/rail'
       path: '/rail'
       fullPath: '/rail'
       preLoaderRoute: typeof AuthenticatedRailRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/road': {
       id: '/_authenticated/road'
       path: '/road'
       fullPath: '/road'
       preLoaderRoute: typeof AuthenticatedRoadRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/sky': {
       id: '/_authenticated/sky'
       path: '/sky'
       fullPath: '/sky'
       preLoaderRoute: typeof AuthenticatedSkyRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/stays': {
       id: '/_authenticated/stays'
       path: '/stays'
       fullPath: '/stays'
       preLoaderRoute: typeof AuthenticatedStaysRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/transfers': {
       id: '/_authenticated/transfers'
       path: '/transfers'
       fullPath: '/transfers'
       preLoaderRoute: typeof AuthenticatedTransfersRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/water': {
       id: '/_authenticated/water'
       path: '/water'
       fullPath: '/water'
       preLoaderRoute: typeof AuthenticatedWaterRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  AuthRoute: AuthRoute,
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAttractionsRoute: typeof AuthenticatedAttractionsRoute
+  AuthenticatedCarRentalRoute: typeof AuthenticatedCarRentalRoute
+  AuthenticatedPhotoCreditsRoute: typeof AuthenticatedPhotoCreditsRoute
+  AuthenticatedRailRoute: typeof AuthenticatedRailRoute
+  AuthenticatedRoadRoute: typeof AuthenticatedRoadRoute
+  AuthenticatedSkyRoute: typeof AuthenticatedSkyRoute
+  AuthenticatedStaysRoute: typeof AuthenticatedStaysRoute
+  AuthenticatedTransfersRoute: typeof AuthenticatedTransfersRoute
+  AuthenticatedWaterRoute: typeof AuthenticatedWaterRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAttractionsRoute: AuthenticatedAttractionsRoute,
   AuthenticatedCarRentalRoute: AuthenticatedCarRentalRoute,
   AuthenticatedPhotoCreditsRoute: AuthenticatedPhotoCreditsRoute,
@@ -269,6 +286,14 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedTransfersRoute: AuthenticatedTransfersRoute,
   AuthenticatedWaterRoute: AuthenticatedWaterRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+const rootRouteChildren: RootRouteChildren = {
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
