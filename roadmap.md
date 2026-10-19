@@ -9,3 +9,5 @@
 - [ ] Verify search, navigation, and account flows in preview.
 - [ ] Replace AI-generated site imagery with authentic destination photographs and make destination images compact.
 - [ ] Add the uploaded brief's property-type and trip-planner browsing sections without inventing verified listings, prices, reviews, or discounts.
+
+- [ ] Require sign-in on every travel page, add private profiles, and verify sign-in, sign-out and access protection.
